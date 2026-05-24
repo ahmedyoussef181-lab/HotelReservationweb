@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maldives Resort & Spa | Luxury Sanctuary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #2bcbba;      
+            --secondary: #f7b731;    
+            --accent: #26de81;       
+            --dark: #2f3542;         
+            --light: #f1f2f6;        
+            --gradient: linear-gradient(135deg, #2bcbba, #0fbcf9);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        nav {
+            background: white;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        nav .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--dark);
+            text-decoration: none;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        nav .logo span {
+            color: var(--primary);
+        }
+
+        nav .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: 0.3s;
+            cursor: pointer;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        nav .nav-links a:hover, nav .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .selector-dropdown {
+            background: var(--light);
+            border: 1px solid #ddd;
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            outline: none;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active-page {
+            display: block;
+        }
+
+        header {
+            position: relative;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), 
+                        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .video-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -2;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3));
+            z-index: -1;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .booking-section {
+            max-width: 1150px;
+            margin: -100px auto 60px;
+            background: white;
+            padding: 45px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            position: relative;
+            z-index: 10;
+        }
+
+        .booking-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .input-group input, .input-group select {
+            padding: 14px 18px;
+            border: 1px solid #dcdde1;
+            border-radius: 6px;
+            outline: none;
+            font-family: inherit;
+            font-size: 0.95rem;
+            background-color: #fff;
+            color: var(--dark);
+            transition: 0.3s;
+        }
+
+        .input-group input:focus, .input-group select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(43, 187, 186, 0.1);
+        }
+
+        .buffet-badge {
+            background: #e3faf9;
+            border: 1px solid var(--primary);
+            border-radius: 8px;
+            padding: 12px 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #0b8482;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .buffet-badge i {
+            font-size: 1.3rem;
+            color: var(--primary);
+        }
+
+        .live-counter {
+            background: #f5f6fa;
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            border-radius: 4px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .counter-label {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .price-tag {
+            font-size: 1.6rem;
+            color: var(--dark);
+            font-weight: bold;
+        }
+
+        .btn-book {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+            margin-top: 25px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .btn-book:hover {
+            opacity: 0.95;
+            transform: translateY(-2px);
+        }
+
+        .rooms-grid, .spa-grid, .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 40px;
+        }
+
+        .room-card, .spa-card, .activity-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            transition: 0.3s;
+            border: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .room-card:hover, .spa-card:hover, .activity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+        }
+
+        .room-image, .spa-image, .activity-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .room-content, .spa-content, .activity-content {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .room-title, .spa-title, .activity-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+            color: var(--dark);
+        }
+
+        .room-features, .spa-features, .activity-features {
+            display: flex;
+            gap: 20px;
+            color: #57606f;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            list-style: none;
+        }
+
+        .room-features i, .spa-features i, .activity-features i {
+            color: var(--primary);
+            margin-right: 6px;
+        }
+
+        .room-footer, .spa-footer, .activity-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #f1f2f6;
+            padding-top: 20px;
+            margin-top: auto;
+        }
+
+        .room-price, .spa-price, .activity-price {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--dark);
+        }
+
+        .room-price span, .spa-price span, .activity-price span {
+            font-size: 0.85rem;
+            color: #747d8c;
+            font-weight: 400;
+        }
+
+        .btn-view {
+            background: transparent;
+            border: 1px solid var(--dark);
+            padding: 10px 22px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-view:hover {
+            background: var(--dark);
+            color: white;
+        }
+
+        .amenities-section {
+            background: white;
+            padding: 80px 0;
+            margin: 80px 0;
+        }
+
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+        }
+
+        .amenity-card {
+            text-align: center;
+            padding: 30px;
+            background: var(--light);
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .amenity-card:hover {
+            transform: translateY(-5px);
+            background: #e3faf9;
+        }
+
+        .amenity-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .amenity-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .amenity-card p {
+            font-size: 0.9rem;
+            color: #747d8c;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            border: 1px solid #eee;
+            position: relative;
+        }
+
+        .testimonial-card .stars {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            color: #57606f;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-card .author {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--dark);
+        }
+
+        .faq-section {
+            max-width: 800px;
+            margin: 80px auto;
+        }
+
+        .faq-accordion details {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            border: 1px solid #eee;
+            transition: 0.3s;
+        }
+
+        .faq-accordion summary {
+            font-weight: 600;
+            font-size: 1.05rem;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-accordion summary::after {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            font-size: 0.9rem;
+            color: var(--primary);
+            transition: 0.3s;
+        }
+
+        .faq-accordion details[open] summary::after {
+            transform: rotate(180deg);
+        }
+
+        .faq-accordion p {
+            margin-top: 15px;
+            color: #57606f;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* MODAL LAYER LUXURY DESIGN */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(47, 53, 66, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-box {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            position: relative;
+            animation: modalFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #a4b0be;
+            transition: 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--dark);
+        }
+
+        .modal-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .room-profile-layout, .spa-profile-layout, .activity-profile-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            background: white;
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+            border: 1px solid #eee;
+        }
+
+        .profile-gallery img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .profile-details h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .profile-price {
+            font-size: 2rem;
+            color: var(--dark);
+            font-weight: bold;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .profile-details p {
+            color: #57606f;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            font-size: 1rem;
+        }
+
+        .amenities-list {
+            margin: 25px 0 35px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            list-style: none;
+        }
+
+        .amenities-list li {
+            font-size: 0.95rem;
+            color: #2f3542;
+        }
+
+        .amenities-list li i {
+            color: var(--primary);
+            margin-right: 10px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+        }
+
+        .info-card {
+            background: white;
+            padding: 45px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+            border: 1px solid #eee;
+        }
+
+        .info-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-bottom: 35px;
+        }
+
+        .info-item i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            background: #e3faf9;
+            padding: 18px;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .info-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-text p {
+            color: #57606f;
+            font-size: 0.95rem;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #dcdde1;
+            border-radius: 6px;
+            outline: none;
+            font-family: inherit;
+            background: #fff;
+        }
+
+        .contact-form input:focus, .contact-form textarea:focus {
+            border-color: var(--primary);
+        }
+
+        .receipt-card {
+            max-width: 650px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.06);
+            padding: 50px;
+            border-top: 6px solid var(--primary);
+        }
+
+        .receipt-header {
+            text-align: center;
+            border-bottom: 2px dashed #dcdde1;
+            padding-bottom: 25px;
+            margin-bottom: 30px;
+            }
+
+        .receipt-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--dark);
+            letter-spacing: 1px;
+        }
+
+        .receipt-header p {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #747d8c;
+            margin-top: 5px;
+        }
+
+        .receipt-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            color: #2f3542;
+        }
+
+        .receipt-row span {
+            color: #747d8c;
+        }
+
+        .receipt-row strong {
+            color: var(--dark);
+        }
+
+        .receipt-row.total-row {
+            border-top: 2px dashed #dcdde1;
+            padding-top: 25px;
+            margin-top: 35px;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .receipt-row.total-row span {
+            color: var(--dark);
+            font-weight: bold;
+        }
+
+        .receipt-row.total-row strong {
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a onclick="showPage('home-page')" class="logo">MALDIVES <span>RESORT & SPA</span></a>
+        <ul class="nav-links">
+            <li><a onclick="showPage('home-page')" id="nav-home" class="active">Home</a></li>
+            <li><a onclick="showPage('spa-dashboard')" id="nav-spa">Spa Services</a></li>
+            <li><a onclick="showPage('activities-dashboard')" id="nav-activities">Activities</a></li>
+            <li><a onclick="showPage('contact-page')" id="nav-contact">Contact Us</a></li>
+            <li class="nav-controls">
+                <select id="currency-select" class="selector-dropdown" onchange="updatePrice()">
+                    <option value="USD" data-symbol="$" data-rate="1.00">USD ($)</option>
+                    <option value="EUR" data-symbol="€" data-rate="0.92">EUR (€)</option>
+                    <option value="GBP" data-symbol="£" data-rate="0.78">GBP (£)</option>
+                </select>
+                <button class="lang-btn selector-dropdown">EN</button>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- SPA RESERVATION MODAL WINDOW -->
+    <div id="spa-booking-modal" class="modal-overlay">
+        <div class="modal-box">
+            <span class="close-modal" onclick="closeSpaModal()">&times;</span>
+            <h3>Reserve Treatment</h3>
+            
+            <div class="input-group">
+                <label for="modal-spa-treatment">Selected Experience</label>
+                <select id="modal-spa-treatment">
+                    <option value="395">Oceanic Detox Therapy — $395</option>
+                    <option value="520">The Island Journey — $520</option>
+                    <option value="245">Deep Tissue Balinese Ritual — $245</option>
+                    <option value="225">Himalayan Salt Stone Massage — $225</option>
+                    <option value="195">Sun-Soother Recovery — $195</option>
+                    <option value="280">Marine Collagen Lift — $280</option>
+                    
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="modal-spa-date">Preferred Date</label>
+                <input type="date" id="modal-spa-date">
+            </div>
+
+            <div class="input-group">
+                <label for="modal-spa-time">Preferred Time Slot</label>
+                <select id="modal-spa-time">
+                    <option value="09:00 AM">09:00 AM</option>
+                    <option value="11:00 AM">11:00 AM</option>
+                    <option value="01:00 PM">01:00 PM</option>
+                    <option value="03:00 PM">03:00 PM</option>
+                    <option value="05:00 PM">05:00 PM</option>
+                    <option value="07:00 PM">07:00 PM</option>
+                </select>
+            </div>
+
+            <button class="btn-book" onclick="submitSpaBooking()">Confirm Spa Request</button>
+        </div>
+    </div>
+
+    <!-- HOME PAGE -->
+    <div id="home-page" class="page active-page">
+        <header>
+            <video class="video-bg" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1500&q=80">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-top-view-of-a-luxury-resort-in-maldives-41857-large.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay"></div>
+            <h1>Maldives Resort & Spa</h1>
+            <p>Your Ultimate Island Sanctuary</p>
+        </header>
+
+        <main class="container">
+            <section class="booking-section">
+                <div class="booking-grid">
+                    <div class="input-group">
+                        <label for="check-in">Arrival Date</label>
+                        <input type="date" id="check-in" onchange="updatePrice()">
+                    </div>
+                    <div class="input-group">
+                        <label for="check-out">Departure Date</label>
+                        <input type="date" id="check-out" onchange="updatePrice()">
+                    </div>
+                    <div class="input-group">
+                        <label for="guests">Guests Count</label>
+                        <select id="guests">
+                            <option value="1">1 Guest</option>
+                            <option value="2">2 Guests</option>
+                            <option value="3">3 Guests</option>
+                            <option value="4">4 Guests</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="room-type">Villa Selection</label>
+                        <select id="room-type" onchange="updatePrice()">
+                            <option value="350" data-name="Beachfront Garden Villa">Beachfront Garden Villa</option>
+                            <option value="650" data-name="Overwater Lagoon Suite">Overwater Lagoon Suite</option>
+                            <option value="1200" data-name="Grand Ocean Sanctuary">Grand Ocean Sanctuary</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="spa-addon">Spa Package</label>
+                        <select id="spa-addon">
+                            <option value="0" data-name="None">No Spa Added</option>
+                            <option value="395" data-name="Oceanic Detox Therapy">Oceanic Detox Therapy</option>
+                            <option value="245" data-name="Deep Tissue Balinese Ritual">Deep Tissue Balinese Ritual</option>
+                            <option value="520" data-name="The Island Journey">The Island Journey</option>
+                             <option value="195" data-name="Sun-Soother Recovery">Sun-Soother Recovery</option>
+                             <option value="280" data-name="Marine Collagen Lift">Marine Collagen Lift</option>
+                             <option value="280" data-name="Marine Collagen Lift">Himalayan Salt Stone Massage</option>
+                             
+                            
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="activity-addon">Activity Excursion</label>
+                        <select id="activity-addon">
+                            <option value="0" data-name="None">No Activity Added</option>
+                            <option value="150" data-name="Sunset Jet Ski blast">Sunset Jet Ski Blast</option>
+                            <option value="250" data-name="Yacht Snorkeling"> Yacht Snorkeling</option>
+                            <option value="280" data-name="Sunset Dolphin Cruise">Sunset Dolphin Cruise</option>
+                             <option value="380" data-name="scuba diving ">scuba diving </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="buffet-badge">
+                    <i class="fas fa-utensils"></i>
+                    <span>✨ Inclusive Luxury Benefit: All-Day Overwater Open Buffet Breakfast, Lunch, & Dinner included with every booking.</span>
+                </div>
+                
+                <div class="live-counter">
+                    <span class="counter-label">Estimated Base Cost per Night (Excluding Addons):</span>
+                    <span class="price-tag" id="total-price">$350.00</span>
+                </div>
+
+                <button class="btn-book" onclick="generateReceipt()">Confirm Booking & View Invoice</button>
+            </section>
+
+            <section class="rooms-preview">
+                <div class="section-header">
+                    <h2>Our Luxury Accommodations</h2>
+                    <p>Immerse yourself in architectural wonders suspended directly above crystal-clear waters</p>
+                </div>
+
+                <div class="rooms-grid">
+                    <div class="room-card">
+                        <div class="room-image" style="background-image: url('https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=600&q=80');"></div>
+                        <div class="room-content">
+                            <h3 class="room-title">Beachfront Garden Villa</h3>
+                            <ul class="room-features">
+                                <li><i class="fas fa-bed"></i> 1 King Bed</li>
+                                <li><i class="fas fa-utensils"></i> Free Open Buffet</li>
+                            </ul>
+                            <div class="room-footer">
+                                <div class="room-price" data-base="350">$350 <span>/ night</span></div>
+                                <button class="btn-view" onclick="showPage('standard-profile')">Explore Villa</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="room-card">
+                        <div class="room-image" style="background-image: url('https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=600&q=80');"></div>
+                        <div class="room-content">
+                            <h3 class="room-title">Overwater Lagoon Suite</h3>
+                            <ul class="room-features">
+                                <li><i class="fas fa-water"></i> Ocean Steps</li>
+                                <li><i class="fas fa-utensils"></i> Free Open Buffet</li>
+                            </ul>
+                            <div class="room-footer">
+                                <div class="room-price" data-base="650">$650 <span>/ night</span></div>
+                                <button class="btn-view" onclick="showPage('deluxe-profile')">Explore Suite</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="room-card">
+                        <div class="room-image" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80');"></div>
+                        <div class="room-content">
+                            <h3 class="room-title">Grand Ocean Sanctuary</h3>
+                            <ul class="room-features">
+                                <li><i class="fas fa-swimming-pool"></i> Plunge Pool</li>
+                                <li><i class="fas fa-utensils"></i> Free Open Buffet</li>
+                            </ul>
+                            <div class="room-footer">
+                                <div class="room-price" data-base="1200">$1,200 <span>/ night</span></div>
+                                <button class="btn-view" onclick="showPage('luxury-profile')">Explore Sanctuary</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="amenities-section">
+                <div class="section-header">
+                    <h2>World-Class Resort Experiences</h2>
+                    <p>Every element of our standard itinerary framework is crafted to elevate your sensory presence</p>
+                </div>
+                <div class="amenities-grid">
+                    <div class="amenity-card">
+                        <i class="fas fa-utensils"></i>
+                        <h3>All-Day Open Buffet</h3>
+                        <p>Immerse your senses in custom local delicacies and standard luxury international gastronomical structures over the water.</p>
+                    </div>
+                    <div class="amenity-card">
+                        <i class="fas fa-swimming-pool"></i>
+                        <h3>Infinity Horizons</h3>
+                        <p>Seamless freshwater edge pool installations structured directly with the oceanic tidal horizons.</p>
+                    </div>
+                    <div class="amenity-card">
+                        <i class="fas fa-fish"></i>
+                        <h3>Coral Exploration</h3>
+                        <p>Guided direct coral reef aquatic scuba diving itineraries managed by certified regional marine experts.</p>
+                    </div>
+                    <div class="amenity-card">
+                        <i class="fas fa-concierge-bell"></i>
+                        <h3>24/7 Island Service</h3>
+                        <p>Absolute direct access layout tracking with your assigned personalized premium villa butler support teams.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- SPA DASHBOARD (EXPANDED SPA MENU + MODAL BOOKING CONNECTORS) -->
+    <div id="spa-dashboard" class="page container">
+        <div class="section-header">
+            <h2>Holistic Spa & Rituals</h2>
+            <p>Transcend daily pressures within our targeted marine-therapy treatment pavilions</p>
+        </div>
+        
+        <div class="spa-grid">
+            <!-- Item 1 -->
+            <div class="spa-card">
+                <div class="spa-image" style="background-image: url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="spa-content">
+                    <div>
+                        <h3 class="spa-title">Oceanic Detox Therapy</h3>
+                        <ul class="spa-features">
+                            <li><i class="far fa-clock"></i> 110 Mins</li>
+                            <li><i class="fas fa-spa"></i> Marine Algae</li>
+                        </ul>
+                        <p style="color: #747d8c; margin-bottom: 20px; font-size: 0.9rem;">Harnesses concentrated coastal mineral structures and specialized wrap techniques to fully rebalance core physical cellular pathways.</p>
+                    </div>
+                    <div class="spa-footer">
+                        <div class="spa-price" data-spa-val="395">$395</div>
+                        <button class="btn-view" onclick="openSpaModal('395')">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="spa-card">
+                <div class="spa-image" style="background-image: url('https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="spa-content">
+                    <div>
+                        <h3 class="spa-title">The Island Journey</h3>
+                        <ul class="spa-features">
+                            <li><i class="far fa-clock"></i> 150 Mins</li>
+                            <li><i class="fas fa-hot-tub"></i> Premium Bundle</li>
+                        </ul>
+                        <p style="color: #747d8c; margin-bottom: 20px; font-size: 0.9rem;">An immersive ritual including crushed coconut scrubs, traditional Balinese full-body massage routines, and specialized facial hydration maps.</p>
+                    </div>
+                    <div class="spa-footer">
+                        <div class="spa-price" data-spa-val="520">$520</div>
+                        <button class="btn-view" onclick="openSpaModal('520')">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="spa-card">
+                <div class="spa-image" style="background-image: url('https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="spa-content">
+                    <div>
+                        <h3 class="spa-title">Deep Tissue Balinese Ritual</h3>
+                        <ul class="spa-features">
+                            <li><i class="far fa-clock"></i> 90 Mins</li>
+                            <li><i class="fas fa-compress-alt"></i> Firm Pressure</li>
+                        </ul>
+                        <p style="color: #747d8c; margin-bottom: 20px; font-size: 0.9rem;">Traditional pressurized trigger management structured with skin rolling to target and completely release stubborn muscular tension anomalies.</p>
+                    </div>
+                    <div class="spa-footer">
+                        <div class="spa-price" data-spa-val="245">$245</div>
+                        <button class="btn-view" onclick="openSpaModal('245')">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="spa-card">
+                <div class="spa-image" style="background-image: url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="spa-content">
+                    <div>
+                        <h3 class="spa-title">Himalayan Salt Stone Massage</h3>
+                        <ul class="spa-features">
+                            <li><i class="far fa-clock"></i> 75 Mins</li>
+                            <li><i class="fas fa-gem"></i> Thermal Stones</li>
+                        </ul>
+                        <p style="color: #747d8c; margin-bottom: 20px; font-size: 0.9rem;">Warm therapeutic salt stones optimize chemical alignment vectors, easing metabolic stress levels while creating deep tranquility profiles.</p>
+                    </div>
+                    <div class="spa-footer">
+                        <div class="spa-price" data-spa-val="225">$225</div>
+                        <button class="btn-view" onclick="openSpaModal('225')">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="spa-card">
+                <div class="spa-image" style="background-image: url('https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="spa-content">
+                    <div>
+                        <h3 class="spa-title">Sun-Soother Recovery</h3>
+                        <ul class="spa-features">
+                            <li><i class="far fa-clock"></i> 60 Mins</li>
+                            <li><i class="fas fa-snowflake"></i> Chilled Relief</li>
+                        </ul>
+                        <p style="color: #747d8c; margin-bottom: 20px; font-size: 0.9rem;">Chilled active local aloe extract and lavender essential elements provide instant therapeutic soothing relief to sun-exposed epidermal layers.</p>
+                    </div>
+                    <div class="spa-footer">
+                        <div class="spa-price" data-spa-val="195">$195</div>
+                        <button class="btn-view" onclick="openSpaModal('195')">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="spa-card">
+                <div class="spa-image" style="background-image: url('https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="spa-content">
+                    <div>
+                        <h3 class="spa-title">Marine Collagen Lift</h3>
+                        <ul class="spa-features">
+                            <li><i class="far fa-clock"></i> 75 Mins</li>
+                            <li><i class="fas fa-magic"></i> Anti-Aging</li>
+                        </ul>
+                        <p style="color: #747d8c; margin-bottom: 20px; font-size: 0.9rem;">An advanced cellular anti-aging face transformation matrix utilising marine proteins to firm structural lines and restore cellular volume indicators.</p>
+                    </div>
+                    <div class="spa-footer">
+                        <div class="spa-price" data-spa-val="280">$280</div>
+                        <button class="btn-view" onclick="openSpaModal('280')">Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ACTIVITIES DASHBOARD -->
+    <div id="activities-dashboard" class="page container">
+        <div class="section-header">
+            <h2>Excursions & Field Adventures</h2>
+            <p>Curated oceanic thrills managed directly by certified maritime handlers</p>
+        </div>
+        <div class="activities-grid">
+            <div class="activity-card">
+                <div class="activity-image" style="background-image: url('https://www.pelago.com/img/products/TH-Thailand/pattaya-jetski-rental-adventure/09f2a693-ab6a-43dd-b722-f7f599c3d21c_pattaya-jetski-rental-adventure-xlarge.webp');"></div>
+                <div class="activity-content">
+                    <h3 class="activity-title">Sunset Jet Ski Blast</h3>
+                    <p style="color: #747d8c; margin-bottom: 20px;">Guided high-velocity exploration parameters following scenic territorial marine routes.</p>
+                    <div class="activity-footer">
+                        <div class="activity-price">$150</div>
+                    </div>
+                </div>
+            </div>
+            <div class="activity-card">
+                <div class="activity-image" style="background-image: url('https://cdn.tourcms.com/a/13222/713/1/large.jpg');"></div>
+                <div class="activity-content">
+                    <h3 class="activity-title">yachet snorkling</h3>
+                    <p style="color: #747d8c; margin-bottom: 20px;">Step off the deck and dive into the ultimate tropical adventure of your lifetime.</p>
+                    <div class="activity-footer">
+                        <div class="activity-price">$250</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     <div class="activities-grid">
+            <div class="activity-card">
+                <div class="activity-image" style="background-image: url('https://oceangroup.mv/wp-content/uploads/2025/01/Dolphin-Cruise--1200x874.jpg');"></div>
+                <div class="activity-content">
+                    <h3 class="activity-title">Sunset Dolphin Cruise</h3>
+                    <p style="color: #747d8c; margin-bottom: 20px;">Nothing matches the magic of watching dolphins leap through the glowing twilight.</p>
+                    <div class="activity-footer">
+                        <div class="activity-price">$280</div>
+                    </div>
+                </div>
+            </div>
+            <div class="activity-grid">
+                <div class="activity-card">
+                <div class="activity-image" style="background-image: url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="activity-content">
+                    <h3 class="activity-title">scuba diving</h3>
+                    <p style="color: #747d8c; margin-bottom: 20px;">Step off the deck and dive into the ultimate tropical adventure of your lifetime.</p>
+                    <div class="activity-footer">
+                        <div class="activity-price">$380</div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- CONTACT PAGE -->
+
+  <div id="contact-page" class="page container active">
+    <div class="section-header">
+        <h2>Connect & Rate Your Experience</h2>
+        <p>Initialize your architectural island vacation framework parameters today</p>
+    </div>
+    
+    <div class="contact-grid">
+        
+        <div class="contact-form info-card">
+            <h3>Submit Experience Rating</h3>
+            <form action="#" method="POST">
+                
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Email Address" required>
+                
+                
+                <div class="rating-input-group">
+                    <label class="rating-label">Framework Rating</label>
+                    <div class="star-rating-form">
+                        <input type="radio" id="star5" name="user-rating" value="5">
+                        <label for="star5" class="fas fa-star" title="5 Stars"></label>
+                        
+                        <input type="radio" id="star4" name="user-rating" value="4">
+                        <label for="star4" class="fas fa-star" title="4 Stars"></label>
+                        
+                        <input type="radio" id="star3" name="user-rating" value="3">
+                        <label for="star3" class="fas fa-star" title="3 Stars"></label>
+                        
+                        <input type="radio" id="star2" name="user-rating" value="2">
+                        <label for="star2" class="fas fa-star" title="2 Stars"></label>
+                        
+                        <input type="radio" id="star1" name="user-rating" value="1" required>
+                        <label for="star1" class="fas fa-star" title="1 Star"></label>
+                    </div>
+                </div>
+
+                <textarea placeholder="Outline your experience, architectural feedback, or customized itinerary matrices..." rows="4" required></textarea>
+                
+                <button type="submit" class="btn-book" style="margin: 0;">Transmit Rating & Review</button>
+                
+            </form>
+        </div>
+
+        <div class="contact-sidebar">
+            
+            <div class="info-card" style="margin-bottom: 30px;">
+                <h3>Resort Contact Parameters</h3>
+                
+                <div class="info-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div class="info-text">
+                        <h4>Direct Registry Line</h4>
+                        <p>+1 (555) 839-2001</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="info-text">
+                        <h4>Location</h4>
+                        <p>Noonu Atoll, Republic of Maldives</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div class="info-text">
+                        <h4>Concierge Email</h4>
+                        <p>registry@luxury-maldivesresort.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form info-card">
+                <h3>Request a Call Back</h3>
+                <form action="#" method="POST">
+                    
+                    <input type="text" placeholder="Your Name" required>
+                    
+                    <input type="tel" placeholder=" Phone Number (+00...)" required>
+                    
+                    <input type="text" placeholder="Preferred time  (e.g., 2:00 PM EST)" required>
+                    
+                    <button type="submit" class="btn-book" style="margin: 0; background-color: #1e70bf;">Initialize Call Request</button>
+                    
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+    <!-- ROOM PROFILE PAGES -->
+    <div id="standard-profile" class="page container">
+        <div class="room-profile-layout">
+            <div class="profile-gallery">
+                <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1200&q=80" alt="Garden Villa">
+            </div>
+            <div class="profile-details">
+                <h2>Beachfront Garden Villa</h2>
+                <div class="profile-price">$350 / night</div>
+                <p>Nestled flawlessly within lush tropical flora networks, step directly off your custom structural hardwood deck directly into pristine oceanic white sands.</p>
+                <ul class="amenities-list">
+                    <li><i class="fas fa-check"></i> Private Tropical Enclosure</li>
+                    <li><i class="fas fa-check"></i> Outdoor Rain Shower Matrix</li>
+                    <li><i class="fas fa-check"></i> Direct Beach Front Access</li>
+                    <li><i class="fas fa-check"></i> Integrated Media Audio Setup</li>
+                </ul>
+                <button class="btn-book" onclick="showPage('home-page')">Back to Booking Matrix</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="deluxe-profile" class="page container">
+        <div class="room-profile-layout">
+            <div class="profile-gallery">
+                <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1200&q=80" alt="Lagoon Suite">
+            </div>
+            <div class="profile-details">
+                <h2>Overwater Lagoon Suite</h2>
+                <div class="profile-price">$650 / night</div>
+                <p>Suspended structurally directly over clear crystalline aquatic currents. Descend directly via structural private overwater stair platforms into your natural tidal basin.</p>
+                <ul class="amenities-list">
+                    <li><i class="fas fa-check"></i> Glass Sub-Floor Panel Portals</li>
+                    <li><i class="fas fa-check"></i> Private Overwater Lagoon Deck</li>
+                    <li><i class="fas fa-check"></i> Direct Ocean Step Ladders</li>
+                    <li><i class="fas fa-check"></i> Deep Soaking Sea-View Tub</li>
+                </ul>
+                <button class="btn-book" onclick="showPage('home-page')">Back to Booking Matrix</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="luxury-profile" class="page container">
+        <div class="room-profile-layout">
+            <div class="profile-gallery">
+                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80" alt="Ocean Sanctuary">
+            </div>
+            <div class="profile-details">
+                <h2>Grand Ocean Sanctuary</h2>
+                <div class="profile-price">$1,200 / night</div>
+                <p>The pinnacle architectural statement of extreme luxury design. Featuring extended configuration modules, multiple private plunge pools, and round-the-clock elite butler support structures.</p>
+                <ul class="amenities-list">
+                    <li><i class="fas fa-check"></i> Private Freshwater Plunge Pool</li>
+                    <li><i class="fas fa-check"></i> Multi-tier Lounge Architecture</li>
+                    <li><i class="fas fa-check"></i> Dedicated Master Butler Room</li>
+                    <li><i class="fas fa-check"></i> Premium Curated Spirit Vault</li>
+                </ul>
+                <button class="btn-book" onclick="showPage('home-page')">Back to Booking Matrix</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- INVOICE/RECEIPT VIEW PAGE -->
+    <div id="receipt-page" class="page container">
+        <div class="receipt-card">
+            <div class="receipt-header">
+                <h3>Reservation Invoice</h3>
+                <p>Confirmed Booking Allocation Registry</p>
+            </div>
+            <div class="receipt-body">
+                <div class="receipt-row"><span>Villa Category:</span> <strong id="rec-villa">-</strong></div>
+                <div class="receipt-row"><span>Nights Count:</span> <strong id="rec-nights">-</strong></div>
+                <div class="receipt-row"><span>Guest Count Configuration:</span> <strong id="rec-guests">-</strong></div>
+                <div class="receipt-row"><span>Spa Wellness Package:</span> <strong id="rec-spa">-</strong></div>
+                <div class="receipt-row"><span>Activity Excursion Matrix:</span> <strong id="rec-activity">-</strong></div>
+                <div class="receipt-row"><span>Overwater Open Buffet Benefit:</span> <strong style="color: var(--accent);">INCLUDED (COMPLIMENTARY)</strong></div>
+                <div class="receipt-row total-row"><span>Grand Invoice Total:</span> <strong id="rec-total">-</strong></div>
+            </div>
+            <button class="btn-book" onclick="window.print()" style="margin-top: 40px; background: var(--dark);"><i class="fas fa-print"></i> Print Invoice Record</button>
+            <button class="btn-book" onclick="showPage('home-page')" style="margin-top: 15px;">Modify Schedule Parameters</button>
+        </div>
+    </div>
+
+    <!-- CORE INTERACTIVE ENGINE SCRIPT -->
+    <script>
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active-page'));
+            
+            const targetPage = document.getElementById(pageId);
+            if(targetPage) {
+                targetPage.classList.add('active-page');
+            }
+
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => link.classList.remove('active'));
+            
+            if(pageId === 'home-page') document.getElementById('nav-home').classList.add('active');
+            if(pageId === 'spa-dashboard') document.getElementById('nav-spa').classList.add('active');
+            if(pageId === 'activities-dashboard') document.getElementById('nav-activities').classList.add('active');
+            if(pageId === 'contact-page') document.getElementById('nav-contact').classList.add('active');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function calculateNights() {
+            const checkIn = document.getElementById('check-in').value;
+            const checkOut = document.getElementById('check-out').value;
+            if (!checkIn || !checkOut) return 1;
+
+            const date1 = new Date(checkIn);
+            const date2 = new Date(checkOut);
+            const timeDiff = date2.getTime() - date1.getTime();
+            const days = Math.ceil(timeDiff / (1000 * 3600 * 24));
+            return days > 0 ? days : 1;
+        }
+
+        function updatePrice() {
+            const currencySelect = document.getElementById('currency-select');
+            const rate = parseFloat(currencySelect.options[currencySelect.selectedIndex].getAttribute('data-rate'));
+            const symbol = currencySelect.options[currencySelect.selectedIndex].getAttribute('data-symbol');
+            
+            const roomType = document.getElementById('room-type');
+            const baseUsdPrice = parseFloat(roomType.value);
+            const calculatedPrice = baseUsdPrice * rate;
+
+            document.getElementById('total-price').innerHTML = symbol + calculatedPrice.toFixed(2);
+
+            // Translate standard room cards
+            const priceElements = document.querySelectorAll('.room-price');
+            priceElements.forEach(el => {
+                const baseVal = parseFloat(el.getAttribute('data-base'));
+                if(baseVal) {
+                    el.innerHTML = symbol + (baseVal * rate).toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 0}) + ' <span>/ night</span>';
+                }
+            });
+
+            // Translate expanded Spa page pricing elements dynamically
+            const spaPriceElements = document.querySelectorAll('.spa-price');
+            spaPriceElements.forEach(el => {
+                const baseSpa = parseFloat(el.getAttribute('data-spa-val'));
+                if(baseSpa) {
+                    el.innerHTML = symbol + (baseSpa * rate).toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 0});
+                }
+            });
+        }
+
+        /* SPA RESERVATION MODAL CORE LOGIC */
+        function openSpaModal(treatmentValue) {
+            const modal = document.getElementById('spa-booking-modal');
+            const treatmentSelect = document.getElementById('modal-spa-treatment');
+            
+            if(treatmentValue) {
+                treatmentSelect.value = treatmentValue;
+            }
+            
+            // Auto prefill spa date field to check-in default value structure
+            document.getElementById('modal-spa-date').value = document.getElementById('check-in').value;
+            
+            modal.style.display = 'flex';
+        }
+
+        function closeSpaModal() {
+            document.getElementById('spa-booking-modal').style.display = 'none';
+        }
+
+        function submitSpaBooking() {
+            const treatmentSelect = document.getElementById('modal-spa-treatment');
+            const selectedText = treatmentSelect.options[treatmentSelect.selectedIndex].text.split('—')[0].trim();
+            const selectedTime = document.getElementById('modal-spa-time').value;
+            const selectedDate = document.getElementById('modal-spa-date').value;
+
+            if(!selectedDate) {
+                alert('Please select a valid date parameter for your ritual.');
+                return;
+            }
+
+            alert(`✨ Spa Allocation Confirmed!\n\nExperience: ${selectedText}\nDate: ${selectedDate}\nTime Slot: ${selectedTime}\n\nYour sanctuary preference has been synchronized with your primary villa itinerary registry.`);
+            
+            // Sync with main page's drop-down selector seamlessly
+            const primarySpaAddon = document.getElementById('spa-addon');
+            if(primarySpaAddon) {
+                primarySpaAddon.value = treatmentSelect.value;
+            }
+            
+            closeSpaModal();
+        }
+
+        function generateReceipt() {
+            const currencySelect = document.getElementById('currency-select');
+            const rate = parseFloat(currencySelect.options[currencySelect.selectedIndex].getAttribute('data-rate'));
+            const symbol = currencySelect.options[currencySelect.selectedIndex].getAttribute('data-symbol');
+
+            const roomSelect = document.getElementById('room-type');
+            const spaSelect = document.getElementById('spa-addon');
+            const actSelect = document.getElementById('activity-addon');
+            
+            const villaName = roomSelect.options[roomSelect.selectedIndex].getAttribute('data-name');
+            const spaName = spaSelect.options[spaSelect.selectedIndex].getAttribute('data-name');
+            const actName = actSelect.options[actSelect.selectedIndex].getAttribute('data-name');
+            
+            const nights = calculateNights();
+            const guests = document.getElementById('guests').value;
+
+            const villaCostTotal = parseFloat(roomSelect.value) * nights;
+            const spaCostTotal = parseFloat(spaSelect.value);
+            const actCostTotal = parseFloat(actSelect.value);
+            const absoluteTotalUsd = villaCostTotal + spaCostTotal + actCostTotal;
+
+            document.getElementById('rec-villa').innerText = villaName;
+            document.getElementById('rec-nights').innerText = nights + (nights === 1 ? ' Night' : ' Nights');
+            document.getElementById('rec-guests').innerText = guests + (guests === '1' ? ' Guest' : ' Guests');
+            document.getElementById('rec-spa').innerText = spaName + (spaCostTotal > 0 ? ` (${symbol}${(spaCostTotal * rate).toFixed(2)})` : '');
+            document.getElementById('rec-activity').innerText = actName + (actCostTotal > 0 ? ` (${symbol}${(actCostTotal * rate).toFixed(2)})` : '');
+            document.getElementById('rec-total').innerText = symbol + (absoluteTotalUsd * rate).toFixed(2);
+
+            showPage('receipt-page');
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const today = new Date();
+            const tomorrow = new Date(today);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+
+            document.getElementById('check-in').value = today.toISOString().split('T')[0];
+            document.getElementById('check-out').value = tomorrow.toISOString().split('T')[0];
+            updatePrice();
+
+            // Close modal when user clicks outside the modal layout frame
+            window.onclick = function(event) {
+                const modal = document.getElementById('spa-booking-modal');
+                if (event.target == modal) {
+                    closeSpaModal();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
